@@ -209,10 +209,16 @@
     <Compile Include="Migrations\202002190015546_Initial_Migration.designer.cs">
       <DependentUpon>202002190015546_Initial_Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002190210167_CREATE_TABLE_USUARIO.cs" />
+    <Compile Include="Migrations\202002190210167_CREATE_TABLE_USUARIO.designer.cs">
+      <DependentUpon>202002190210167_CREATE_TABLE_USUARIO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
+    <Compile Include="Models\DAO\USUARIODAO.cs" />
     <Compile Include="Models\FATOR_CALCULO.cs" />
+    <Compile Include="Models\USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +290,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002190015546_Initial_Migration.resx">
       <DependentUpon>202002190015546_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002190210167_CREATE_TABLE_USUARIO.resx">
+      <DependentUpon>202002190210167_CREATE_TABLE_USUARIO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

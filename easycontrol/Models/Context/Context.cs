@@ -12,6 +12,7 @@ namespace easycontrol.Models.Context
         public Context() : base("ContextEasycontrol") {  }
 
         public DbSet<FATOR_CALCULO> FATOR_CALCULOs { get; set; }
+        public DbSet<USUARIO> USUARIOs { get; set; }
 
     }
 }

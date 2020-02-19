@@ -7,7 +7,6 @@ namespace easycontrol.Models
 {
     public class FATOR_CALCULO
     {
-
         public int ID { get; set; }
         public int QTD_PARCELAS { get; set; }
         public float JUROS_PER { get; set; }
@@ -15,12 +14,10 @@ namespace easycontrol.Models
         public DateTime DTCADASTRO { get; set; }
         public DateTime DTALTERACAO { get; set; }
 
-
         public FATOR_CALCULO()
         {
 
         }
-
 
         public FATOR_CALCULO(int _QTD_PARCELAS, float _JUROS_PER, float _COMISSAO_PER, DateTime _DTCADASTRO, DateTime _DTALTERACAO)
         {
