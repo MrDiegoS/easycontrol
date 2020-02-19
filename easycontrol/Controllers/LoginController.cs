@@ -1,4 +1,7 @@
-﻿using System;
+﻿using easycontrol.Models;
+using easycontrol.Models.BO;
+using easycontrol.Models.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +11,8 @@ namespace easycontrol.Controllers
 {
     public class LoginController : Controller
     {
+       
 
-        
         public ActionResult Index()
         {
             return View();
