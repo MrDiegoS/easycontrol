@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace easycontrol.Controllers
 {
-    public class LoginController : Controller
+    public class HomeController : Controller
     {
        
 
