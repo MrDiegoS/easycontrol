@@ -1,6 +1,7 @@
 ﻿using easycontrol.Models;
 using easycontrol.Models.DAO;
 using easycontrol.Services;
+using System;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
@@ -46,6 +47,9 @@ namespace easycontrol.Controllers
 
             if (_usuario != null)
             {
+                //Retorna falso pois não foi encontrado e-mail ou senha para o usuário
+                if (String.IsNullOrEmpty(_usuario.EMAIL) || String.IsNullOrEmpty(_usuario.SENHA)) return Json(false, JsonRequestBehavior.AllowGet);
+
                 _email.enviaEmail(_usuario.EMAIL, _usuario.SENHA);
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

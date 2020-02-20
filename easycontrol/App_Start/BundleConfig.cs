@@ -17,6 +17,9 @@ namespace easycontrol
             bundles.Add(new ScriptBundle("~/bundles/home").Include(
                        "~/Scripts/Home/home.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                       "~/Scripts/Areas/Admin/admin.js"));
+
             // Use a versão em desenvolvimento do Modernizr para desenvolver e aprender. Em seguida, quando estiver
             // pronto para a produção, utilize a ferramenta de build em https://modernizr.com para escolher somente os testes que precisa.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

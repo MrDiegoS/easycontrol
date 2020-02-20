@@ -1,34 +1,28 @@
 ﻿@{
     ViewBag.Title = "Acesso";
 }
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<body>
-    @RenderPage("../Shared/_Header.cshtml")
+@RenderPage("../Shared/_Header.cshtml")
 
 
 
-    <div>
-        <label>USER:</label>
-        <input type="text" id="iUser" value="" />
-        <br />
-        <label>SENHA:</label>
-        <input type="password" id="iPassword" value="" />
-        <br />
-        <label id="avisoNulo" style="display: none ">Os campos user e senha são obrigatórios</label>
-
-    </div>
-    <di>
-        <label id="btnLogar">Entrar</label>
-    </di>
+<div>
+    <label>USER:</label>
+    <input type="text" id="iUser" value="" />
     <br />
-    <di>
-        <a style=" cursor: pointer;" id="aEsqueci">Puts! esqueci minha senha</a>  
-    </di>
+    <label>SENHA:</label>
+    <input type="password" id="iPassword" value="" />
+    <br />
+    <label id="avisoNulo" style="display: none ">Os campos user e senha são obrigatórios</label>
 
-    @RenderPage("../Shared/_Footer.cshtml")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/home")
-</body>
-</html>
+</div>
+<di>
+    <label id="btnLogar">Entrar</label>
+</di>
+<br />
+<di>
+    <a style=" cursor: pointer;" id="aEsqueci">Puts! esqueci minha senha</a>
+</di>
+
+
+@RenderPage("../Shared/_Footer.cshtml")

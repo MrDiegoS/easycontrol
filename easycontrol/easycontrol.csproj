@@ -217,6 +217,10 @@
     <Compile Include="Migrations\202002192225036_ALTER_TABLE_USUARIO.designer.cs">
       <DependentUpon>202002192225036_ALTER_TABLE_USUARIO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002202048522_ALTER_TABLE_FAT_CALCULO.cs" />
+    <Compile Include="Migrations\202002202048522_ALTER_TABLE_FAT_CALCULO.designer.cs">
+      <DependentUpon>202002202048522_ALTER_TABLE_FAT_CALCULO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
@@ -240,6 +244,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Areas\Admin\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -250,8 +255,9 @@
     <Content Include="Areas\User\Views\_ViewStart.cshtml" />
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\User\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\home\home.js" />
+    <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -305,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002192225036_ALTER_TABLE_USUARIO.resx">
       <DependentUpon>202002192225036_ALTER_TABLE_USUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002202048522_ALTER_TABLE_FAT_CALCULO.resx">
+      <DependentUpon>202002202048522_ALTER_TABLE_FAT_CALCULO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

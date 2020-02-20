@@ -29,11 +29,16 @@ function logar() {
             success: function (response) {
                 var dataUser = JSON.parse(JSON.stringify(response));
                 if (dataUser != false) {
+                    sessionStorage.setItem("adminKey", "");
                     if (dataUser["ADMIN"]) {
+                        sessionStorage.setItem("adminKey", "uhuuul");
                         window.location.href = '/Admin/Home/';
+                    } else {
+
+                        window.location.href = '/User/Home/';
                     }
                 } else {
-                    alert("Algo deu errado");
+                    alert("Senha e/ou User estão inválidos");
                 }
             },
             failure: function (response) {
@@ -65,7 +70,9 @@ function enviaEmail() {
             success: function (response) {
                 var dataUser = JSON.parse(JSON.stringify(response));
                 if (dataUser != false) {
-                    alert("E-mail enviado, favor conferir sua caixa de entrada")
+                    alert("E-mail enviado, favor conferir sua caixa de entrada");
+                } else {
+                    alert("Não encontramos alguma informação importante, favor entrar em contato a central");
                 }
             },
             failure: function (response) {
@@ -76,8 +83,7 @@ function enviaEmail() {
             }
         });
     } else {
-        alert("Campos nulos");
-        $("#avisoNulo").show();
+        alert("É necessário informar o User");
     }
 }
 
