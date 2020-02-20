@@ -1,4 +1,5 @@
-﻿using System;
+﻿using easycontrol.Models.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace easycontrol.Models.DAO
     public class USUARIODAO
     {
         private readonly Context.Context _context = new Context.Context();
+        private readonly  Hash _HASH = new Hash(); 
 
         public USUARIODAO()
         {
@@ -31,7 +33,7 @@ namespace easycontrol.Models.DAO
                 //ATRIBUINDO OS VALORES PARA OBJETO
                 _USUARIO.NOME = NOME;
                 _USUARIO.USER = USER;
-                _USUARIO.SENHA = SENHA;
+                _USUARIO.SENHA = _HASH.Criptografar(SENHA);
                 _USUARIO.EMAIL = EMAIL;
                 _USUARIO.ADMIN = ADMIN;
                 _USUARIO.DTCADASTRO = DateTime.Now;
@@ -47,7 +49,7 @@ namespace easycontrol.Models.DAO
             }
             catch (Exception e)
             {
-                return 0;
+                throw new Exception(e.Message, e);
             }
 
         }
@@ -71,7 +73,7 @@ namespace easycontrol.Models.DAO
                 //CARREGANDO AS INFORMAÇÕES EXISTENTE
                 _USUARIO = _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
 
-                if (_USUARIO.ID != 0)
+                if (_USUARIO != null)
                 {
                     //ATRIBUINDO OS VALORES PARA OBJETO
                     _USUARIO.NOME = NOME;
@@ -86,12 +88,11 @@ namespace easycontrol.Models.DAO
 
                     return true;
                 }
-
                 return false;
             }
             catch (Exception e)
             {
-                return false;
+                throw new Exception(e.Message, e);
             }
         }
 
@@ -107,7 +108,7 @@ namespace easycontrol.Models.DAO
 
                 _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
 
-                if (_USUARIO.ID != 0)
+                if (_USUARIO != null)
                 {
                     //EXCLUINDO O REGISTRO
                     _context.USUARIOs.Remove(_USUARIO);
@@ -123,7 +124,52 @@ namespace easycontrol.Models.DAO
             }
             catch (Exception e)
             {
-                return false;
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        /// <summary>CONSULTAR O USUARIO</summary>
+        /// <param name="USER">USUARIO A SER PESQUISADO</param>
+        /// <returns>USUARIO</returns>
+        public USUARIO ConsultarUsuario(string USER)
+        {
+            try
+            {
+                return _context.USUARIOs.Where(x => x.USER == USER).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        /// <summary>VALIDAR ACESSO</summary>
+        /// <param name="USER">USUARIO A SER COMPARADO</param>
+        /// <param name="SENHA">SENHA A SER COMPARADA</param>
+        /// <returns>USUARIO</returns>
+        public USUARIO ValidarAcesso(string USER, string SENHA)
+        {
+            try
+            {
+                USUARIO _USUARIO = new USUARIO();
+                
+                //Busca usuário correspondente no banco
+                _USUARIO = ConsultarUsuario(USER);
+
+                //Valida se busca resultou informações
+                if(_USUARIO != null)
+                {
+                    //Compara a senha informada com a existente
+                    if(_HASH.ValidarSenha(SENHA,_USUARIO.SENHA))
+                    {
+                        return _USUARIO;
+                    }
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
             }
         }
     }

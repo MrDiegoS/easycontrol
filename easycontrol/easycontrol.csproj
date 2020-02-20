@@ -213,13 +213,19 @@
     <Compile Include="Migrations\202002190210167_CREATE_TABLE_USUARIO.designer.cs">
       <DependentUpon>202002190210167_CREATE_TABLE_USUARIO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002192225036_ALTER_TABLE_USUARIO.cs" />
+    <Compile Include="Migrations\202002192225036_ALTER_TABLE_USUARIO.designer.cs">
+      <DependentUpon>202002192225036_ALTER_TABLE_USUARIO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
+    <Compile Include="Models\Utiil\Hash.cs" />
     <Compile Include="Models\DAO\USUARIODAO.cs" />
     <Compile Include="Models\FATOR_CALCULO.cs" />
     <Compile Include="Models\USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Email.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\easycontrolDB.mdf" />
@@ -245,6 +251,7 @@
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\User\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\home\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -295,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002190210167_CREATE_TABLE_USUARIO.resx">
       <DependentUpon>202002190210167_CREATE_TABLE_USUARIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002192225036_ALTER_TABLE_USUARIO.resx">
+      <DependentUpon>202002192225036_ALTER_TABLE_USUARIO.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

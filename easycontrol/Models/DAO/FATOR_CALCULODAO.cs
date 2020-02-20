@@ -43,7 +43,7 @@ namespace easycontrol.Models.DAO
             }
             catch (Exception e)
             {
-                return 0;
+                throw new Exception(e.Message, e);
             }
 
         }
@@ -84,7 +84,7 @@ namespace easycontrol.Models.DAO
             }
             catch (Exception e)
             {
-                return false;
+                throw new Exception(e.Message, e);
             }
         }
 
@@ -116,7 +116,7 @@ namespace easycontrol.Models.DAO
             }
             catch (Exception e)
             {
-                return false;
+                throw new Exception(e.Message, e);
             }
         }
 
