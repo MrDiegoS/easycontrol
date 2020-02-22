@@ -1,9 +1,7 @@
-﻿using easycontrol.Models;
-using easycontrol.Models.DAO;
+﻿using easycontrol.Areas.Admin.models;
+using easycontrol.Areas.Admin.models.DAO;
 using easycontrol.Services;
 using System;
-using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
 
 namespace easycontrol.Controllers

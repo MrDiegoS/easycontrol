@@ -1,34 +1,32 @@
 ﻿
 @{
-    ViewBag.Title = "Fator Cálculo";
+    ViewBag.Title = "Usuário";
 }
 
-@Scripts.Render("~/bundles/fator")
+@Scripts.Render("~/bundles/usuario")
 @RenderPage("~/Areas/Admin/Views/Shared/_Header.cshtml")
-
-
-
 
 <br />
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAlterar" onclick="verificaAcao()">
-    Adicionar Fator
+    Adicionar Usuário
 </button>
 <br />
 <br />
+
 <div>
     <table class="table table-dark">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Tipo de Juros</th>
-                <th scope="col">Juros em %</th>
-                <th scope="col">Comissão paschoaloto</th>
-                <th scope="col">Quantidade de Parcelas</th>
+                <th scope="col">Nome</th>
+                <th scope="col">User</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Admin</th>
                 <th scope="col">Data do Cadastro</th>
                 <th colspan="2">Ações</th>
             </tr>
         </thead>
-        <tbody id="fatorBody"></tbody>
+        <tbody id="userBody"></tbody>
     </table>
 </div>
 
@@ -44,24 +42,29 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <input type="number" id="fatorID" value="" hidden/>
+                    <input type="number" id="userID" value="" hidden />
 
-                    <label>Quantidade de Parcelas</label>
-                    <input type="number"  step="1" min="0" id="qtdParc" value="" />
+                    <label>Nome</label>
+                    <input type="text" id="userNome" value="" />
 
-                    <label>Tipo de Juros</label>
-                    <select id="tipoJuros">
+                    <label>User</label>
+                    <input type="text" id="user" value="" />
+
+                    <label>E-mail</label>
+                    <input type="text" id="email" value="" />
+
+                    <label>Perfil</label>
+                    <select id="perfil">
                         <option selected>Selecione</option>
-                        <option value="1">Simples</option>
-                        <option value="2">Composto</option>
+                        <option value="0">Cliente</option>
+                        <option value="1">Administrador</option>
                     </select>
 
-                    <label>Juros sobre a dívida</label>
-                    <input type="number"  step="0.01" min="0" max="100" id="jurosPer" value="" />
+                    <div id="divSenha">
+                        <label id="senhaDiver" hidden>As senhas não são iguais</label>
+                    </div>
 
-                    <label>Comissão Paschoalotto</label>
-                    <input type="number"  step="0.01" min="0" max="100" id="jurosPasch" value="" />
-                </div>   
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -70,6 +73,3 @@
         </div>
     </div>
 </div>
-
-
-

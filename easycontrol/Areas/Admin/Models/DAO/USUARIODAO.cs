@@ -1,15 +1,15 @@
-﻿using easycontrol.Models.Util;
+﻿using easycontrol.Models.Context;
+using easycontrol.Models.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace easycontrol.Models.DAO
+namespace easycontrol.Areas.Admin.models.DAO
 {
     public class USUARIODAO
     {
-        private readonly Context.Context _context = new Context.Context();
-        private readonly  Hash _HASH = new Hash(); 
+        private readonly Context _context = new Context();
+        private readonly Hash _HASH = new Hash();
 
         public USUARIODAO()
         {
@@ -23,29 +23,39 @@ namespace easycontrol.Models.DAO
         /// <param name="EMAIL">EMAIL DO USUARIO</param>
         /// <param name="ADMIN">FLAG PARA USUARIO ADMIN</param>
         /// <returns>O ID RESULTANTE DA INSERÇÃO</returns>
-        public int InserirUsuario(string NOME, string USER, string SENHA, string EMAIL, bool ADMIN)
+        public int InserirUsuario(USUARIO _usuario)
         {
             try
             {
                 //DEFINE VARIAVEL 
                 USUARIO _USUARIO = new USUARIO();
 
-                //ATRIBUINDO OS VALORES PARA OBJETO
-                _USUARIO.NOME = NOME;
-                _USUARIO.USER = USER;
-                _USUARIO.SENHA = _HASH.Criptografar(SENHA);
-                _USUARIO.EMAIL = EMAIL;
-                _USUARIO.ADMIN = ADMIN;
-                _USUARIO.DTCADASTRO = DateTime.Now;
-                _USUARIO.DTALTERACAO = DateTime.Now;
+                //Pesquisa usuário com o mesmo user
+                _USUARIO = _context.USUARIOs.Where(x => x.USER.ToLower() == _usuario.USER.ToLower()).FirstOrDefault();
 
-                //ADICIONANDO OS VALORES AO CONTEXTO
-                _context.USUARIOs.Add(_USUARIO);
+                if (_USUARIO == null)
+                {
+                    //Limpando sujeira da variavel
+                    _USUARIO = new USUARIO();
 
-                //SALVANDO MUDANÇAS
-                _context.SaveChanges();
+                    //ATRIBUINDO OS VALORES PARA OBJETO
+                    _USUARIO.NOME = _usuario.NOME;
+                    _USUARIO.USER = _usuario.USER;
+                    _USUARIO.SENHA = _HASH.Criptografar(_usuario.SENHA);
+                    _USUARIO.EMAIL = _usuario.EMAIL;
+                    _USUARIO.ADMIN = _usuario.ADMIN;
+                    _USUARIO.DTCADASTRO = DateTime.Now;
+                    _USUARIO.DTALTERACAO = DateTime.Now;
 
-                return _USUARIO.ID;
+                    //ADICIONANDO OS VALORES AO CONTEXTO
+                    _context.USUARIOs.Add(_USUARIO);
+
+                    //SALVANDO MUDANÇAS
+                    _context.SaveChanges();
+
+                    return _USUARIO.ID;
+                }
+                return 0;
             }
             catch (Exception e)
             {
@@ -59,11 +69,9 @@ namespace easycontrol.Models.DAO
         /// <param name="ID">ID DO REGISTRO A SER ALTERADO</param>
         /// <param name="NOME">NOME DO USUARIO</param>
         /// <param name="USER">LOGIN DO USUARIO</param>
-        /// <param name="SENHA">SENHA DO USUARIO</param>
         /// <param name="EMAIL">EMAIL DO USUARIO</param>
-        /// <param name="ADMIN">FLAG PARA USUARIO ADMIN</param>
         /// <returns>SUCESSO OU FALSO</returns>
-        public bool ALterarUsuario(int ID, string NOME, string USER, string SENHA, string EMAIL, bool ADMIN)
+        public bool AlterarUsuario(USUARIO _USER)
         {
             try
             {
@@ -71,16 +79,15 @@ namespace easycontrol.Models.DAO
                 USUARIO _USUARIO = new USUARIO();
 
                 //CARREGANDO AS INFORMAÇÕES EXISTENTE
-                _USUARIO = _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
+                _USUARIO = _context.USUARIOs.Where(x => x.ID == _USER.ID).FirstOrDefault();
 
                 if (_USUARIO != null)
                 {
                     //ATRIBUINDO OS VALORES PARA OBJETO
-                    _USUARIO.NOME = NOME;
-                    _USUARIO.USER = USER;
-                    _USUARIO.SENHA = SENHA;
-                    _USUARIO.EMAIL = EMAIL;
-                    _USUARIO.ADMIN = ADMIN;
+                    _USUARIO.NOME = _USER.NOME;
+                    _USUARIO.USER = _USER.USER;
+                    _USUARIO.EMAIL = _USER.EMAIL;
+                    _USUARIO.ADMIN = _USER.ADMIN;
                     _USUARIO.DTALTERACAO = DateTime.Now;
 
                     //SALVANDO MUDANÇAS
@@ -106,7 +113,7 @@ namespace easycontrol.Models.DAO
                 //DEFINE VARIAVEL 
                 USUARIO _USUARIO = new USUARIO();
 
-                _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
+                _USUARIO = _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
 
                 if (_USUARIO != null)
                 {
@@ -152,20 +159,57 @@ namespace easycontrol.Models.DAO
             try
             {
                 USUARIO _USUARIO = new USUARIO();
-                
+
                 //Busca usuário correspondente no banco
                 _USUARIO = ConsultarUsuario(USER);
 
                 //Valida se busca resultou informações
-                if(_USUARIO != null)
+                if (_USUARIO != null)
                 {
                     //Compara a senha informada com a existente
-                    if(_HASH.ValidarSenha(SENHA,_USUARIO.SENHA))
+                    if (_HASH.ValidarSenha(SENHA, _USUARIO.SENHA))
                     {
                         return _USUARIO;
                     }
                 }
                 return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
+
+
+        /// <summary>LISTA OS PARÂMETROS PARA CALCULO DA DÍVIDA</summary>
+        /// <returns>LISTA DE PARÂMETROS PARA CALCULO DA DÍVIDA</returns>
+        public List<USUARIO> ListarFatorCalculo()
+        {
+            try
+            {
+                //DEFINE VARIAVEL 
+                List<USUARIO> _USUARIO = new List<USUARIO>();
+
+                _USUARIO = _context.USUARIOs.ToList();
+
+                if (_USUARIO != null) return _USUARIO;
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        /// <summary>BUSCA O USUÁRIO</summary>
+        /// <param name="ID">ID DO REGISTRO A SER BUSCADO</param>
+        /// <returns>RETORNAR USUARIO</returns>
+        public USUARIO PesquisarFatorCalculo(int ID)
+        {
+            try
+            {
+                return _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
             }
             catch (Exception e)
             {

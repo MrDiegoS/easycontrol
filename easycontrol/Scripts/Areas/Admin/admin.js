@@ -2,7 +2,7 @@
 
     $("#lHome").on('click', function (event) {
         event.stopPropagation();
-        window.location.href = '/Home/';
+        window.location.href = '/Admin/Home/';
     });
 
     $("#ldoCalc").on('click', function (event) {
@@ -10,10 +10,9 @@
         window.location.href = '/Admin/Fator/';
     });
 
-    $("#XABLAU").on('click', function (event) {
+    $("#lconsUser").on('click', function (event) {
         event.stopPropagation();
-        window.location.href = '/Fator/';
-        listFatorCalculo();
+        window.location.href = '/Admin/Usuario/';
     });
 
 });

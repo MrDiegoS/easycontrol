@@ -26,7 +26,7 @@ namespace easycontrol.Areas.Admin.Controllers
             {
                 return Json(_fator_calculo, JsonRequestBehavior.AllowGet);
             }
-            return Json(false, JsonRequestBehavior.AllowGet); ;
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult AlterarFatorCalculo(FATOR_CALCULO _fator_calculo)
@@ -50,7 +50,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return Json(_fator_calculodao.ExcluirFatorCalculo(id), JsonRequestBehavior.AllowGet); ;
         }
 
-        public JsonResult AdicionrFatorCalculo(FATOR_CALCULO _fator_calculo)
+        public JsonResult AdicionarFatorCalculo(FATOR_CALCULO _fator_calculo)
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();
             //Retornar sucesso ou falso para tentativa de excluir o fator calculo

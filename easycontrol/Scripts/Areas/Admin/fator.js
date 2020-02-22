@@ -149,7 +149,7 @@ function adicionarFatorCalculo() {
             data: JSON.stringify(_fatoCalculo),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            url: "/Fator/AdicionrFatorCalculo",
+            url: "/Fator/AdicionarFatorCalculo",
             success: function (response) {
                 var dataUser = JSON.parse(JSON.stringify(response));
 
