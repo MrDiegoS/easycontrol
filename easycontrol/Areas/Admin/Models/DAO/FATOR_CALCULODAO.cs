@@ -1,14 +1,15 @@
-﻿using System;
+﻿using easycontrol.Models.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 
-namespace easycontrol.Models.DAO
+namespace easycontrol.Areas.Admin.models.DAO
 {
     public class FATOR_CALCULODAO
     {
-        private readonly Context.Context _context = new Context.Context();
+        private readonly Context _context = new Context();
 
 
         public FATOR_CALCULODAO()
@@ -21,7 +22,7 @@ namespace easycontrol.Models.DAO
         /// <param name="JUROS_TIPO">TIPO DO JUROS</param>
         /// <param name="COMISSAO_PER">COMISSÃO SOBRE A DÍVIDA</param>
         /// <returns>O ID RESULTANTE DA INSERÇÃO</returns>
-        public int InserirFatorCalculo(int QTD_PARCELAS, float JUROS_PER, string JUROS_TIPO, float COMISSAO_PER)
+        public int InserirFatorCalculo(FATOR_CALCULO _FATOR)
         {
             try
             {
@@ -29,10 +30,10 @@ namespace easycontrol.Models.DAO
                 FATOR_CALCULO _FATOR_CALCULO = new FATOR_CALCULO();
 
                 //ATRIBUINDO OS VALORES PARA OBJETO
-                _FATOR_CALCULO.QTD_PARCELAS = QTD_PARCELAS;
-                _FATOR_CALCULO.JUROS_PER = JUROS_PER;
-                _FATOR_CALCULO.JUROS_TIPO = JUROS_TIPO;
-                _FATOR_CALCULO.COMISSAO_PER = COMISSAO_PER;
+                _FATOR_CALCULO.QTD_PARCELAS = _FATOR.QTD_PARCELAS;
+                _FATOR_CALCULO.JUROS_PER = _FATOR.JUROS_PER;
+                _FATOR_CALCULO.JUROS_TIPO = ((EnumJuros)Convert.ToInt32(_FATOR.JUROS_TIPO)).ToString();
+                _FATOR_CALCULO.COMISSAO_PER = _FATOR.COMISSAO_PER;
                 _FATOR_CALCULO.DTCADASTRO = DateTime.Now;
                 _FATOR_CALCULO.DTALTERACAO = DateTime.Now;
 
@@ -50,7 +51,6 @@ namespace easycontrol.Models.DAO
 
         }
 
-
         /// <summary>ALTERA OS PARÂMETROS PARA CALCULO DA DÍVIDA</summary>
         /// <param name="ID">ID DO REGISTRO A SER ALTERADO</param>
         /// <param name="QTD_PARCELAS">QUANTIDADE DE PARCELAS PERMITIDAS</param>
@@ -58,7 +58,7 @@ namespace easycontrol.Models.DAO
         /// <param name="JUROS_TIPO">TIPO DO JUROS</param>
         /// <param name="COMISSAO_PER">COMISSÃO SOBRE A DÍVIDA</param>
         /// <returns>SUCESSO OU FALSO</returns>
-        public bool ALterarFatorCalculo(int ID, int QTD_PARCELAS, float JUROS_PER, string JUROS_TIPO, float COMISSAO_PER)
+        public bool AlterarFatorCalculo(FATOR_CALCULO _FATOR)
         {
             try
             {
@@ -66,15 +66,15 @@ namespace easycontrol.Models.DAO
                 FATOR_CALCULO _FATOR_CALCULO = new FATOR_CALCULO();
 
                 //CARREGANDO AS INFORMAÇÕES EXISTENTE
-                _FATOR_CALCULO = _context.FATOR_CALCULOs.Where(x => x.ID == ID).FirstOrDefault();
+                _FATOR_CALCULO = _context.FATOR_CALCULOs.Where(x => x.ID == _FATOR.ID).FirstOrDefault();
 
-                if (_FATOR_CALCULO.ID != 0)
+                if (_FATOR_CALCULO != null)
                 {
                     //ATRIBUINDO OS VALORES PARA OBJETO
-                    _FATOR_CALCULO.QTD_PARCELAS = QTD_PARCELAS;
-                    _FATOR_CALCULO.JUROS_PER = JUROS_PER;
-                    _FATOR_CALCULO.JUROS_TIPO = JUROS_TIPO;
-                    _FATOR_CALCULO.COMISSAO_PER = COMISSAO_PER;
+                    _FATOR_CALCULO.QTD_PARCELAS = _FATOR.QTD_PARCELAS;
+                    _FATOR_CALCULO.JUROS_PER = _FATOR.JUROS_PER;
+                    _FATOR_CALCULO.JUROS_TIPO = ((EnumJuros)Convert.ToInt32(_FATOR.JUROS_TIPO)).ToString();
+                    _FATOR_CALCULO.COMISSAO_PER = _FATOR.COMISSAO_PER;
                     _FATOR_CALCULO.DTALTERACAO = DateTime.Now;
 
                     //SALVANDO MUDANÇAS
@@ -82,9 +82,7 @@ namespace easycontrol.Models.DAO
 
                     return true;
                 }
-
                 return false;
-
             }
             catch (Exception e)
             {
@@ -102,9 +100,9 @@ namespace easycontrol.Models.DAO
                 //DEFINE VARIAVEL 
                 FATOR_CALCULO _FATOR_CALCULO = new FATOR_CALCULO();
 
-                _context.FATOR_CALCULOs.Where(x => x.ID == ID).FirstOrDefault();
+                _FATOR_CALCULO = _context.FATOR_CALCULOs.Where(x => x.ID == ID).FirstOrDefault();
 
-                if (_FATOR_CALCULO.ID != 0)
+                if (_FATOR_CALCULO != null)
                 {
                     //EXCLUINDO O REGISTRO
                     _context.FATOR_CALCULOs.Remove(_FATOR_CALCULO);
@@ -114,9 +112,7 @@ namespace easycontrol.Models.DAO
 
                     return true;
                 }
-
                 return false;
-
             }
             catch (Exception e)
             {
@@ -124,5 +120,48 @@ namespace easycontrol.Models.DAO
             }
         }
 
+        /// <summary>BUSCA OS PARÂMETROS PARA CALCULO DA DÍVIDA</summary>
+        /// <param name="ID">ID DO REGISTRO A SER BUSCADO</param>
+        /// <returns>FATOR CALCULO</returns>
+        public FATOR_CALCULO PesquisarFatorCalculo(int ID)
+        {
+            try
+            {
+                return _context.FATOR_CALCULOs.Where(x => x.ID == ID).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        /// <summary>LISTA OS PARÂMETROS PARA CALCULO DA DÍVIDA</summary>
+        /// <returns>LISTA DE PARÂMETROS PARA CALCULO DA DÍVIDA</returns>
+        public List<FATOR_CALCULO> ListarFatorCalculo()
+        {
+            try
+            {
+                //DEFINE VARIAVEL 
+                List<FATOR_CALCULO> _FATOR_CALCULO = new List<FATOR_CALCULO>();
+
+                _FATOR_CALCULO = _context.FATOR_CALCULOs.ToList();
+
+                if (_FATOR_CALCULO != null) return _FATOR_CALCULO;
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
+
+
+        //Listas dos tipos de juros
+        enum EnumJuros
+        {
+            Simples = 1,
+            Composto = 2
+        }
     }
 }

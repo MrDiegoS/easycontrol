@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using easycontrol.Areas.Admin.models;
 
 namespace easycontrol.Models.Context
 {
