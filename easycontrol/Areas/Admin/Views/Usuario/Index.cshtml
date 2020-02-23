@@ -44,31 +44,60 @@
                 <div>
                     <input type="number" id="userID" value="" hidden />
 
-                    <label>Nome</label>
-                    <input type="text" id="userNome" value="" />
-
-                    <label>User</label>
-                    <input type="text" id="user" value="" />
-
-                    <label>E-mail</label>
-                    <input type="text" id="email" value="" />
-
-                    <label>Perfil</label>
-                    <select id="perfil">
-                        <option selected>Selecione</option>
-                        <option value="0">Cliente</option>
-                        <option value="1">Administrador</option>
-                    </select>
-
-                    <div id="divSenha">
-                        <label id="senhaDiver" hidden>As senhas não são iguais</label>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Nome</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="userNome" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>User</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="user" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>E-mail</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="email" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Perfil</label>
+                            </div>
+                            <div class="col">
+                                <select id="perfil">
+                                    <option selected>Selecione</option>
+                                    <option value="0">Cliente</option>
+                                    <option value="1">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="divSenha">
+                            <label id="senhaDiver" hidden>As senhas não são iguais</label>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="verificaAcao()" id="salvarEditar"></button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary" onclick="verificaAcao()" id="salvarEditar"></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

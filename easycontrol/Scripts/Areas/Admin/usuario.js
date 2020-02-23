@@ -95,40 +95,44 @@ function userEditar() {
 
 //Adicina um usuario
 function adcionarUser() {
-    if (validaCampos() && confirmaSenha()) {
-        var _user = new Object();
-        _user.NOME = $("#userNome").val();
-        _user.USER = $("#user").val();
-        _user.EMAIL = $("#email").val();
-        _user.SENHA = $("#senha").val();
-        _user.ADMIN = $("#perfil").val();
+    if (validaCampos()) {
+        if (confirmaSenha()) {
+            var _user = new Object();
+            _user.NOME = $("#userNome").val();
+            _user.USER = $("#user").val();
+            _user.EMAIL = $("#email").val();
+            _user.SENHA = $("#senha").val();
+            _user.ADMIN = $("#perfil").val();
 
-        $.ajax({
-            type: "POST",
-            data: JSON.stringify(_user),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            url: "/Usuario/AdicionarUsuario",
-            success: function (response) {
-                var dataUser = JSON.parse(JSON.stringify(response));
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(_user),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Usuario/AdicionarUsuario",
+                success: function (response) {
+                    var dataUser = JSON.parse(JSON.stringify(response));
 
-                if (dataUser != false) {
-                    alert("Adicionado com sucesso!");
-                    listUser();
-                    $('#modalAlterar').modal('toggle');
-                    limpaCampos();
+                    if (dataUser != false) {
+                        alert("Adicionado com sucesso!");
+                        listUser();
+                        $('#modalAlterar').modal('toggle');
+                        limpaCampos();
 
-                } else {
-                    alert("User já cadastrado na nossa base");
+                    } else {
+                        alert("User já cadastrado na nossa base");
+                    }
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
                 }
-            },
-            failure: function (response) {
-                alert(response.responseText);
-            },
-            error: function (response) {
-                alert(response.responseText);
-            }
-        });
+            });
+        } else {
+            alert("Senhas não são iguais");
+        }
     } else {
         alert("Todos os campos são obrigatórios");
     };
@@ -220,7 +224,7 @@ function verificaAcao(id) {
         $("#salvarEditar").append("Gravar");
         $("#modalTitulo").html("");
         $("#divSenha").html("");
-        $("#divSenha").append("  <label>Senha</label> <input type = 'password' id = 'senha' value = '' /> <label>Confirma sua senha</label>  <input type='password' id='confirmSenha' value='' />");
+        $("#divSenha").append(" <div class='row'> <div class='col'> <label>Senha</label>  </div>  <div class='col'><input type = 'password' id = 'senha' value = '' /></div></div><div class='row'><div class='col'> <label>Confirma sua senha</label> </div> <div class='col'> <input type='password' id='confirmSenha' value='' /></div></div>");
         $("#salvarEditar").attr("onclick", "adcionarUser()");
     };
 };
