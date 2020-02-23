@@ -14,6 +14,7 @@ namespace easycontrol.Models.Context
 
         public DbSet<FATOR_CALCULO> FATOR_CALCULOs { get; set; }
         public DbSet<USUARIO> USUARIOs { get; set; }
+        public DbSet<INADIMPLENCIA> INADIMPLENCIAs { get; set; }
 
     }
 }

@@ -61,7 +61,6 @@ namespace easycontrol.Areas.Admin.models.DAO
             {
                 throw new Exception(e.Message, e);
             }
-
         }
 
 
@@ -180,10 +179,9 @@ namespace easycontrol.Areas.Admin.models.DAO
             }
         }
 
-
-        /// <summary>LISTA OS PARÂMETROS PARA CALCULO DA DÍVIDA</summary>
-        /// <returns>LISTA DE PARÂMETROS PARA CALCULO DA DÍVIDA</returns>
-        public List<USUARIO> ListarFatorCalculo()
+        /// <summary>LISTA OS USUÁRIOS</summary>
+        /// <returns>LISTA DE USUÁRIOS</returns>
+        public List<USUARIO> ListarUser()
         {
             try
             {
@@ -202,14 +200,21 @@ namespace easycontrol.Areas.Admin.models.DAO
             }
         }
 
-        /// <summary>BUSCA O USUÁRIO</summary>
-        /// <param name="ID">ID DO REGISTRO A SER BUSCADO</param>
+        /// <summary>BUSCA O USUÁRIO POR ID OU USER</summary>
+        /// <param name="_USUARIO">USUARIO A SER BUSCADO</param>
         /// <returns>RETORNAR USUARIO</returns>
-        public USUARIO PesquisarFatorCalculo(int ID)
+        public USUARIO PesquisarUsuario(USUARIO _USUARIO)
         {
             try
             {
-                return _context.USUARIOs.Where(x => x.ID == ID).FirstOrDefault();
+                if (_USUARIO.ID > 0)
+                {
+                    return _context.USUARIOs.Where(x => x.ID == _USUARIO.ID).FirstOrDefault();
+                }
+                else
+                {
+                    return _context.USUARIOs.Where(x => x.USER.ToLower() == _USUARIO.USER.ToLower()).FirstOrDefault();
+                }
             }
             catch (Exception e)
             {

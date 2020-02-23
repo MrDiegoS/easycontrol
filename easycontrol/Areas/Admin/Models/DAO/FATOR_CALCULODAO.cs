@@ -1,4 +1,5 @@
-﻿using easycontrol.Models.Context;
+﻿using easycontrol.Areas.Admin.Models.DAO;
+using easycontrol.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace easycontrol.Areas.Admin.models.DAO
 
                 //ADICIONANDO OS VALORES AO CONTEXTO
                 _context.FATOR_CALCULOs.Add(_FATOR_CALCULO);
+
                 //SALVANDO MUDANÇAS
                 _context.SaveChanges();
 
@@ -158,7 +160,7 @@ namespace easycontrol.Areas.Admin.models.DAO
 
 
         //Listas dos tipos de juros
-        enum EnumJuros
+        public enum EnumJuros
         {
             Simples = 1,
             Composto = 2

@@ -200,9 +200,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DividaController.cs" />
     <Compile Include="Areas\Admin\Controllers\FatorController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsuarioController.cs" />
+    <Compile Include="Areas\Admin\Models\DAO\INADIMPLENCIADAO.cs" />
+    <Compile Include="Areas\Admin\Models\INADIMPLENCIA.cs" />
     <Compile Include="Areas\User\Controllers\HomeController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,6 +228,10 @@
     <Compile Include="Migrations\202002202048522_ALTER_TABLE_FAT_CALCULO.designer.cs">
       <DependentUpon>202002202048522_ALTER_TABLE_FAT_CALCULO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002222213298_CREATE_TABLE_INADIMPLENCIA.cs" />
+    <Compile Include="Migrations\202002222213298_CREATE_TABLE_INADIMPLENCIA.designer.cs">
+      <DependentUpon>202002222213298_CREATE_TABLE_INADIMPLENCIA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Areas\Admin\Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
@@ -240,6 +247,7 @@
     <Content Include="App_Data\easycontrolDB_log.ldf">
       <DependentUpon>easycontrolDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\assests\Images\Icon\lupa.ico" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -259,6 +267,7 @@
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\User\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Scripts\Areas\Admin\divida.js" />
     <Content Include="Scripts\Areas\Admin\fator.js" />
     <Content Include="Scripts\Areas\Admin\usuario.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -286,6 +295,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Areas\Admin\Views\Fator\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Divida\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -417,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002202048522_ALTER_TABLE_FAT_CALCULO.resx">
       <DependentUpon>202002202048522_ALTER_TABLE_FAT_CALCULO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002222213298_CREATE_TABLE_INADIMPLENCIA.resx">
+      <DependentUpon>202002222213298_CREATE_TABLE_INADIMPLENCIA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

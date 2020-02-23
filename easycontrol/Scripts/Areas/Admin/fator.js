@@ -79,7 +79,7 @@ function carregarModal(id) {
                 $("#jurosPer").val(dataFator["JUROS_PER"]);
                 $("#jurosPasch").val(dataFator["COMISSAO_PER"]);
             } else {
-                alert("Não foi possível alterar, tente mais tarde");
+                alert("Não foi possível carregar as informações");
             }
         },
         failure: function (response) {
@@ -119,7 +119,7 @@ function fatorEditar() {
                     limpaCampos();
 
                 } else {
-                    alert("Não foi possível alterar, tente mais tarde");
+                    alert("Não foi possível alterar, tente novamente mais tarde");
                 }
             },
             failure: function (response) {
@@ -160,7 +160,7 @@ function adicionarFatorCalculo() {
                     limpaCampos();
 
                 } else {
-                    alert("Não foi possível alterar, tente mais tarde");
+                    alert("Não foi possível adicionar, tente novamente mais tarde");
                 }
             },
             failure: function (response) {
@@ -195,7 +195,7 @@ function excluirFator(id) {
                     alert("Excluido com sucesso!");
                     listFatorCalculo();
                 } else {
-                    alert("Não foi possível excluir, tente mais tarde");
+                    alert("Não foi possível excluir, tente novamente mais tarde");
                 }
             },
             failure: function (response) {

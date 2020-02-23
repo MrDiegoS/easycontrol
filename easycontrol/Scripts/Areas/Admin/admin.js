@@ -15,4 +15,9 @@
         window.location.href = '/Admin/Usuario/';
     });
 
+    $("#lcadIna").on('click', function (event) {
+        event.stopPropagation();
+        window.location.href = '/Admin/Divida/';
+    });
+
 });

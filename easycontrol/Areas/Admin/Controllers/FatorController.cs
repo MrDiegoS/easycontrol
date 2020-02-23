@@ -13,6 +13,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
         public JsonResult ListarFatorCalculo()
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();
@@ -29,6 +30,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public JsonResult AlterarFatorCalculo(FATOR_CALCULO _fator_calculo)
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();
@@ -36,6 +38,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return Json(_fator_calculodao.AlterarFatorCalculo(_fator_calculo), JsonRequestBehavior.AllowGet); ;
         }
 
+        [HttpPost]
         public JsonResult CarregaFatorCalculo(int id)
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();
@@ -43,6 +46,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return Json(_fator_calculodao.PesquisarFatorCalculo(id), JsonRequestBehavior.AllowGet); ;
         }
 
+        [HttpPost]
         public JsonResult ExcluirFatorCalculo(int id)
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();
@@ -50,6 +54,7 @@ namespace easycontrol.Areas.Admin.Controllers
             return Json(_fator_calculodao.ExcluirFatorCalculo(id), JsonRequestBehavior.AllowGet); ;
         }
 
+        [HttpPost]
         public JsonResult AdicionarFatorCalculo(FATOR_CALCULO _fator_calculo)
         {
             FATOR_CALCULODAO _fator_calculodao = new FATOR_CALCULODAO();

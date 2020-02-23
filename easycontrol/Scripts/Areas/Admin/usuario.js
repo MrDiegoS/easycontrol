@@ -51,7 +51,7 @@ function listUser() {
 }
 
 //Edita um usuario
-function userEditar(id) {
+function userEditar() {
 
     if (validaCampos()) {
         var _user = new Object();
@@ -77,7 +77,7 @@ function userEditar(id) {
                     limpaCampos();
 
                 } else {
-                    alert("Não foi possível alterar, tente mais tarde");
+                    alert("Não foi possível alterar, tente novamente mais tarde");
                 }
             },
             failure: function (response) {
@@ -154,7 +154,7 @@ function excluirUsuario(id) {
                     alert("Excluido com sucesso!");
                     listUser();
                 } else {
-                    alert("Não foi possível excluir, tente mais tarde");
+                    alert("Não foi possível excluir, tente novamente mais tarde");
                 }
             },
             failure: function (response) {
@@ -171,6 +171,7 @@ function excluirUsuario(id) {
 function carregarModal(id) {
     var _user = new Object();
     _user.ID = id;
+    _user.USER = "";
 
     $.ajax({
         type: "POST",
@@ -187,9 +188,8 @@ function carregarModal(id) {
                 $("#user").val(dataUser["USER"]);
                 $("#email").val(dataUser["EMAIL"]);
                 $("#perfil").val((dataUser["ADMIN"]) == true ? 1 : 0);
-                console.log(dataUser["ADMIN"]);
             } else {
-                alert("Não foi possível alterar, tente mais tarde");
+                alert("Não foi possível carregar as informações");
             }
         },
         failure: function (response) {
