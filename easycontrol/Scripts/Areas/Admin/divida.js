@@ -156,11 +156,11 @@ function listaDivida() {
                     _html = _html + "                                   </tr>";
                     _html = _html + "                                       <td>" + (i + 1) + "</td>";
                     _html = _html + "                                       <td>" + value.USUARIO.NOME + "</td>";
-                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_ORIGINAL).toFixed(2) + "</td>";
+                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_ORIGINAL).toFixed(2).replace(".", ",") + "</td>";
                     _html = _html + "                                       <td>" + value.INADIMPLENCIA.ATRASODIAS + "</td>";
-                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_JUROS).toFixed(2) + "</td>";
-                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_CALCULADO).toFixed(2) + "</td>";
-                    _html = _html + "                                       <td> R$ " + parseFloat(value.PARCELAS[0].VALOR).toFixed(2) + "</td>";
+                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_JUROS).toFixed(2).replace(".", ",") + "</td>";
+                    _html = _html + "                                       <td> R$ " + parseFloat(value.INADIMPLENCIA.VALOR_CALCULADO).toFixed(2).replace(".", ",") + "</td>";
+                    _html = _html + "                                       <td> R$ " + parseFloat(value.PARCELAS[0].VALOR).toFixed(2).replace(".", ",") + "</td>";
                     _html = _html + "                                       <td>" + moment(value.INADIMPLENCIA.DT_VENCIMENTO).format('DD/MM/YYYY')+ "</td>";
                     _html = _html + "                                   </tr>";
                     _html = _html + "                               </tbody>";
@@ -182,7 +182,7 @@ function listaDivida() {
                     $.each(value.PARCELAS, function (j, values) {
                         _html = _html + "                       <tr>";
                         _html = _html + "                           <td>" + (j + 1) + "</td>";
-                        _html = _html + "                           <td> R$ " + parseFloat(values.VALOR).toFixed(2) + " </td>";
+                        _html = _html + "                           <td> R$ " + parseFloat(values.VALOR).toFixed(2).replace(".", ",") + " </td>";
                         _html = _html + "                           <td>" + moment(values.DT_VENCIMENTO).format('DD/MM/YYYY') + " </td>";
                         _html = _html + "                       </tr>";
                     });
