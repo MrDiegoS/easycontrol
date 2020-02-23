@@ -154,7 +154,7 @@ function excluirUsuario(id) {
                     alert("Excluido com sucesso!");
                     listUser();
                 } else {
-                    alert("Não foi possível excluir, tente novamente mais tarde");
+                    alert("Não foi possível excluir, existem amarrações para esse usuário");
                 }
             },
             failure: function (response) {

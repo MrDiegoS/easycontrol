@@ -195,7 +195,7 @@ function excluirFator(id) {
                     alert("Excluido com sucesso!");
                     listFatorCalculo();
                 } else {
-                    alert("Não foi possível excluir, tente novamente mais tarde");
+                    alert("Não foi possível excluir, existem amarrações com esse fator");
                 }
             },
             failure: function (response) {

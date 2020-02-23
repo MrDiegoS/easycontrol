@@ -116,6 +116,12 @@ namespace easycontrol.Areas.Admin.models.DAO
 
                 if (_USUARIO != null)
                 {
+                    //VERIFICA AMARRAÇÃO COM USUÁRIO
+                    if (_context.INADIMPLENCIAs.Where(x => x.USERID == _USUARIO.ID).FirstOrDefault() != null)
+                    {
+                        return false;
+                    }
+                    
                     //EXCLUINDO O REGISTRO
                     _context.USUARIOs.Remove(_USUARIO);
 

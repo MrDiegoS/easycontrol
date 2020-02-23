@@ -106,6 +106,13 @@ namespace easycontrol.Areas.Admin.models.DAO
 
                 if (_FATOR_CALCULO != null)
                 {
+
+                    //VERIFICA AMARRAÇÃO COM FATOR CALCULO
+                    if (_context.INADIMPLENCIAs.Where(x => x.FATORID == _FATOR_CALCULO.ID).FirstOrDefault() != null)
+                    {
+                        return false;
+                    }
+
                     //EXCLUINDO O REGISTRO
                     _context.FATOR_CALCULOs.Remove(_FATOR_CALCULO);
 

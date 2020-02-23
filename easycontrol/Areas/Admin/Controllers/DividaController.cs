@@ -26,11 +26,11 @@ namespace easycontrol.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult ListarDivida()
+        public JsonResult ListarDivida(int? _uerID = 0)
         {
             INADIMPLENCIADAO _INDADIMPLENCIADAO = new INADIMPLENCIADAO();
 
-            return Json(_INDADIMPLENCIADAO.litarInadim(), JsonRequestBehavior.AllowGet);
+            return Json(_INDADIMPLENCIADAO.litarInadim(_uerID), JsonRequestBehavior.AllowGet);
         }
     }
 }

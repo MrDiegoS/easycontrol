@@ -1,5 +1,6 @@
 ﻿using easycontrol.Areas.Admin.models;
 using easycontrol.Areas.Admin.models.DAO;
+using easycontrol.Areas.Admin.Models.DAO;
 using easycontrol.Services;
 using System;
 using System.Web.Mvc;
@@ -55,9 +56,13 @@ namespace easycontrol.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        #region funções
-        
-        #endregion
+        [HttpPost]
+        public JsonResult ListarDivida(int userID)
+        {
+            INADIMPLENCIADAO _INDADIMPLENCIADAO = new INADIMPLENCIADAO();
+
+            return Json(_INDADIMPLENCIADAO.litarInadim(userID), JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

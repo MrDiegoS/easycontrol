@@ -1,5 +1,7 @@
 ﻿
 $(document).ready(function () {
+    sessionStorage.setItem("adminKey", "");
+    sessionStorage.setItem("user", "");
 
     $("#btnLogar").on('click', function (event) {
         event.stopPropagation();
@@ -30,11 +32,11 @@ function logar() {
                 var dataUser = JSON.parse(JSON.stringify(response));
                 if (dataUser != false) {
                     sessionStorage.setItem("adminKey", "");
+                    sessionStorage.setItem("user", dataUser["ID"]);
                     if (dataUser["ADMIN"]) {
-                        sessionStorage.setItem("adminKey", "uhuuul");
+                        sessionStorage.setItem("adminKey", dataUser["ADMIN"]);
                         window.location.href = '/Admin/Home/';
                     } else {
-
                         window.location.href = '/User/Home/';
                     }
                 } else {

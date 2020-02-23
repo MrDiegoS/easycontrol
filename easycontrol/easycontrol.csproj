@@ -276,6 +276,7 @@
     <Content Include="Scripts\Areas\Admin\divida.js" />
     <Content Include="Scripts\Areas\Admin\fator.js" />
     <Content Include="Scripts\Areas\Admin\usuario.js" />
+    <Content Include="Scripts\Areas\user.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -303,6 +304,7 @@
     <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Divida\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Divida\Dividas.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_Header.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

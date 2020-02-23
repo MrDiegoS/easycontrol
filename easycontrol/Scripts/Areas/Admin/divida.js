@@ -133,8 +133,6 @@ function listaDivida() {
             var dataInadim = JSON.parse(JSON.stringify(response));
 
             if (dataInadim != false) {
-
-                console.log(dataInadim);
                     _html = _html + "       <div class='accordion' id='acordDivida'>";
                 $.each(dataInadim, function (i, value) {
                     _html = _html + "           <div class='card' >";
@@ -196,7 +194,6 @@ function listaDivida() {
                     _html = _html + "       </div>";
                 });
             };
-            console.log(_html);
             $("#dividaBody").html("");
             $("#dividaBody").append(_html);
         },
