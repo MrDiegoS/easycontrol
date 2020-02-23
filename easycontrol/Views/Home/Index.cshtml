@@ -4,25 +4,62 @@
 
 @RenderPage("../Shared/_Header.cshtml")
 
+<style>
+    .easyAlert {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -170px;
+        margin-top: -292px;
+        padding: 10px;
+        /*border: 1px solid #d0d0d0;*/
+    }
+</style>
 
-
-<div>
-    <label>USER:</label>
-    <input type="text" id="iUser" value="" />
-    <br />
-    <label>SENHA:</label>
-    <input type="password" id="iPassword" value="" />
-    <br />
-    <label id="avisoNulo" style="display: none ">Os campos user e senha são obrigatórios</label>
-
-</div>
-<di>
-    <label id="btnLogar">Entrar</label>
-</di>
 <br />
-<di>
-    <a style=" cursor: pointer;" id="aEsqueci">Puts! esqueci minha senha</a>
-</di>
+<div class="container justify-content-around">
+    <div class="row">
+        <div class="col-sm-4">
+            <label>User:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" id="iUser" value="" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Senha:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="password" id="iPassword" value="" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-success" onclick="logar()">Success</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-warning" onclick="enviaEmail()" style="cursor: help;">Puts! esqueci minha senha</button>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="easyAlert" id="avisoNulo">
+    <div class="alert alert-info alert-dismissible fade show" >
+        <strong>Atenção! </strong><p id="mensagem"></p>
+        <button type="button" class="close"  onclick="$('#avisoNulo').hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+
+
+
+
 
 
 @RenderPage("../Shared/_Footer.cshtml")

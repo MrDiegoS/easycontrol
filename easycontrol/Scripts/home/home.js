@@ -3,15 +3,7 @@ $(document).ready(function () {
     sessionStorage.setItem("adminKey", "");
     sessionStorage.setItem("user", "");
 
-    $("#btnLogar").on('click', function (event) {
-        event.stopPropagation();
-        logar();
-    });
-
-    $("#aEsqueci").on('click', function (event) {
-        event.stopPropagation();
-        enviaEmail();
-    });
+   
 
 });
 
@@ -40,7 +32,7 @@ function logar() {
                         window.location.href = '/User/Home/';
                     }
                 } else {
-                    alert("Senha e/ou User estão inválidos");
+                    showMsg("Senha e/ou User estão inválidos");
                 }
             },
             failure: function (response) {
@@ -51,8 +43,7 @@ function logar() {
             }
         });
     } else {
-        alert("Campos nulos");
-        $("#avisoNulo").show();
+        showMsg("Todos os campos são obrigatórios");
     }
 }
 
@@ -72,9 +63,9 @@ function enviaEmail() {
             success: function (response) {
                 var dataUser = JSON.parse(JSON.stringify(response));
                 if (dataUser != false) {
-                    alert("E-mail enviado, favor conferir sua caixa de entrada");
+                    showMsg("E-mail enviado, favor conferir sua caixa de entrada");
                 } else {
-                    alert("Não encontramos alguma informação importante, favor entrar em contato a central");
+                    showMsg("Não encontramos alguma informação importante, favor entrar em contato a central");
                 }
             },
             failure: function (response) {
@@ -85,7 +76,7 @@ function enviaEmail() {
             }
         });
     } else {
-        alert("É necessário informar o User");
+        showMsg("É necessário informar o User");
     }
 }
 
@@ -93,4 +84,10 @@ function enviaEmail() {
 //Valida campos nulos
 function ValidarCampos() {
     return $('#iUser').val().replace(" ", "") != "" && $('#iPassword').val().replace(" ", "") != "";
+}
+
+function showMsg(texto) {
+    $("#avisoNulo").show();
+    $("#mensagem").html("");
+    $("#mensagem").append(texto);
 }
