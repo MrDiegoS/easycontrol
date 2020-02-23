@@ -130,7 +130,7 @@ function fatorEditar() {
             }
         });
     } else {
-        alert("Todos os campos são obrigatórios");
+        alert("Todos os campos são obrigatórios, em caso de valor usar pontos ou vírgulas");
     };
 };
 
@@ -171,7 +171,7 @@ function adicionarFatorCalculo() {
             }
         });
     } else {
-        alert("Todos os campos são obrigatórios");
+        alert("Todos os campos são obrigatórios, em caso de valor usar pontos ou vírgulas");
     };
 }
 
