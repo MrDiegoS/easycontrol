@@ -38,7 +38,7 @@ function listFatorCalculo() {
                     _html = _html + "     <td>" + value.JUROS_PER + "</td>";
                     _html = _html + "     <td>" + value.COMISSAO_PER + "</td>";
                     _html = _html + "     <td>" + value.QTD_PARCELAS + "</td>";
-                    _html = _html + "     <td>" + Date(parseInt(value.DTCADASTRO.substr(6))) + "</td>";
+                    _html = _html + "     <td>" + moment(value.DTCADASTRO).format('DD/MM/YYYY') + "</td>";
                     _html = _html + "     <td onclick='verificaAcao(" + value.ID + ")'>Ediar</td>";
                     _html = _html + "     <td onclick='excluirFator(" + value.ID + ")'> Excluir </td>";
                     _html = _html + " </tr>";

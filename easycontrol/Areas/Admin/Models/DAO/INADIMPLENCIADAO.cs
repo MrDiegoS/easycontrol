@@ -66,15 +66,18 @@ namespace easycontrol.Areas.Admin.Models.DAO
                 InadimplenciaBusiness _INADIMBUSINESS = new InadimplenciaBusiness();
                 ParcelaBusiness _PARCELASBUSINESS = new ParcelaBusiness();
 
-                _INADIMBUSINESS.INADIMPLENCIA = new INADIMPLENCIA();
-                _INADIMBUSINESS.USUARIO = new USUARIO();
-                _INADIMBUSINESS.PARCELAS = new List<ParcelaBusiness>();
+              
 
                 _INADIMPLENCIA = _context.INADIMPLENCIAs.ToList();
 
                 //PERCORRE A LISTA DE INADIMPLENCIA ENCONTRADA
                 foreach (var item in _INADIMPLENCIA)
                 {
+                    _INADIMBUSINESS = new InadimplenciaBusiness();
+                    _INADIMBUSINESS.INADIMPLENCIA = new INADIMPLENCIA();
+                    _INADIMBUSINESS.USUARIO = new USUARIO();
+                    _INADIMBUSINESS.PARCELAS = new List<ParcelaBusiness>();
+
                     //CARREGA OS DADOS NO OBJETO
                     _INADIMBUSINESS.USUARIO = _context.USUARIOs.Where(x => x.ID == item.USERID).FirstOrDefault();
                     _INADIMBUSINESS.INADIMPLENCIA.DT_CALCULO = item.DT_CALCULO;
@@ -82,13 +85,15 @@ namespace easycontrol.Areas.Admin.Models.DAO
                     _INADIMBUSINESS.INADIMPLENCIA.QTD_PARCELAS = item.QTD_PARCELAS;
                     _INADIMBUSINESS.INADIMPLENCIA.VALOR_CALCULADO = item.VALOR_CALCULADO;
                     _INADIMBUSINESS.INADIMPLENCIA.VALOR_JUROS = item.VALOR_JUROS;
+                    _INADIMBUSINESS.INADIMPLENCIA.ATRASODIAS = item.ATRASODIAS;
                     _INADIMBUSINESS.INADIMPLENCIA.VALOR_ORIGINAL = item.VALOR_ORIGINAL;
 
                     //PERCORRE A LISTA DE PARCELAS REFERENTE A INADIMPLENCIA
-                    for (int i = 1; i < item.QTD_PARCELAS; i++)
+                    for (int i = 1; i <= item.QTD_PARCELAS; i++)
                     {
+                        _PARCELASBUSINESS = new ParcelaBusiness();
                         _PARCELASBUSINESS.ID = i;
-                        _PARCELASBUSINESS.DT_VENCIMENTO = item.DT_VENCIMENTO.AddMonths(i);
+                        _PARCELASBUSINESS.DT_VENCIMENTO = item.DT_VENCIMENTO.AddMonths(i).Date;
                         _PARCELASBUSINESS.VALOR = item.VALOR_PARCELA;
                         _INADIMBUSINESS.PARCELAS.Add(_PARCELASBUSINESS);
                     }

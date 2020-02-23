@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202002222213298_CREATE_TABLE_INADIMPLENCIA.designer.cs">
       <DependentUpon>202002222213298_CREATE_TABLE_INADIMPLENCIA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002231805403_ALTER_TABLE_INADIMPLENCIA.cs" />
+    <Compile Include="Migrations\202002231805403_ALTER_TABLE_INADIMPLENCIA.designer.cs">
+      <DependentUpon>202002231805403_ALTER_TABLE_INADIMPLENCIA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Areas\Admin\Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
@@ -311,6 +315,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -433,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002222213298_CREATE_TABLE_INADIMPLENCIA.resx">
       <DependentUpon>202002222213298_CREATE_TABLE_INADIMPLENCIA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002231805403_ALTER_TABLE_INADIMPLENCIA.resx">
+      <DependentUpon>202002231805403_ALTER_TABLE_INADIMPLENCIA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,7 @@ namespace easycontrol.Areas.Admin.models
         public float VALOR_CALCULADO { get; set; }
         public float VALOR_PARCELA { get; set; }
         public int QTD_PARCELAS { get; set; }
+        public int ATRASODIAS { get; set; }
         public DateTime DT_VENCIMENTO { get; set; }
         public DateTime DT_CALCULO { get; set; }
 
@@ -23,7 +24,7 @@ namespace easycontrol.Areas.Admin.models
 
         }
 
-        public INADIMPLENCIA(float _VALOR_ORIGINAL, int _USERID, int _FATORID, float _VALOR_JUROS, float _VALOR_COMISSAO, float _VALOR_CALCULADO, float _VALOR_PARCELA, int _QTD_PARCELAS, DateTime _DT_VENCIMENTO, DateTime _DT_CALCULO)
+        public INADIMPLENCIA(float _VALOR_ORIGINAL, int _USERID, int _FATORID, float _VALOR_JUROS, float _VALOR_COMISSAO, float _VALOR_CALCULADO, float _VALOR_PARCELA, int _QTD_PARCELAS, int _ATRASODIAS, DateTime _DT_VENCIMENTO, DateTime _DT_CALCULO)
         {
             this.USERID = _USERID;
             this.FATORID = _USERID;
@@ -33,6 +34,7 @@ namespace easycontrol.Areas.Admin.models
             this.VALOR_CALCULADO = _VALOR_CALCULADO;
             this.VALOR_PARCELA = _VALOR_PARCELA;
             this.QTD_PARCELAS = _QTD_PARCELAS;
+            this.ATRASODIAS = _ATRASODIAS;
             this.DT_VENCIMENTO = _DT_VENCIMENTO;
             this.DT_CALCULO = _DT_CALCULO;
         }
