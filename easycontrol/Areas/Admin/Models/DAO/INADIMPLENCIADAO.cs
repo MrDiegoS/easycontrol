@@ -1,7 +1,9 @@
 ﻿using easycontrol.Areas.Admin.models;
 using easycontrol.Areas.Admin.models.DAO;
+using easycontrol.Areas.Admin.Models.Business;
 using easycontrol.Models.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static easycontrol.Areas.Admin.models.DAO.FATOR_CALCULODAO;
 
@@ -52,7 +54,54 @@ namespace easycontrol.Areas.Admin.Models.DAO
             }
         }
 
+        /// <summary>LISTA DIVIDAS</summary>
+        /// <returns>LISTA DE INADIMPLENCIAS</returns>
+        public List<InadimplenciaBusiness> litarInadim()
+        {
+            try
+            {
+                List<InadimplenciaBusiness> _INADIMPLENCIABUSINESS = new List<InadimplenciaBusiness>();
+                List<INADIMPLENCIA> _INADIMPLENCIA = new List<INADIMPLENCIA>();
+                List<USUARIO> _USUARIO = new List<USUARIO>();
+                InadimplenciaBusiness _INADIMBUSINESS = new InadimplenciaBusiness();
+                ParcelaBusiness _PARCELASBUSINESS = new ParcelaBusiness();
 
+                _INADIMBUSINESS.INADIMPLENCIA = new INADIMPLENCIA();
+                _INADIMBUSINESS.USUARIO = new USUARIO();
+                _INADIMBUSINESS.PARCELAS = new List<ParcelaBusiness>();
+
+                _INADIMPLENCIA = _context.INADIMPLENCIAs.ToList();
+
+                //PERCORRE A LISTA DE INADIMPLENCIA ENCONTRADA
+                foreach (var item in _INADIMPLENCIA)
+                {
+                    //CARREGA OS DADOS NO OBJETO
+                    _INADIMBUSINESS.USUARIO = _context.USUARIOs.Where(x => x.ID == item.USERID).FirstOrDefault();
+                    _INADIMBUSINESS.INADIMPLENCIA.DT_CALCULO = item.DT_CALCULO;
+                    _INADIMBUSINESS.INADIMPLENCIA.DT_VENCIMENTO = item.DT_VENCIMENTO;
+                    _INADIMBUSINESS.INADIMPLENCIA.QTD_PARCELAS = item.QTD_PARCELAS;
+                    _INADIMBUSINESS.INADIMPLENCIA.VALOR_CALCULADO = item.VALOR_CALCULADO;
+                    _INADIMBUSINESS.INADIMPLENCIA.VALOR_JUROS = item.VALOR_JUROS;
+                    _INADIMBUSINESS.INADIMPLENCIA.VALOR_ORIGINAL = item.VALOR_ORIGINAL;
+
+                    //PERCORRE A LISTA DE PARCELAS REFERENTE A INADIMPLENCIA
+                    for (int i = 1; i < item.QTD_PARCELAS; i++)
+                    {
+                        _PARCELASBUSINESS.ID = i;
+                        _PARCELASBUSINESS.DT_VENCIMENTO = item.DT_VENCIMENTO.AddMonths(i);
+                        _PARCELASBUSINESS.VALOR = item.VALOR_PARCELA;
+                        _INADIMBUSINESS.PARCELAS.Add(_PARCELASBUSINESS);
+                    }
+                    //PERCORRE ADICIONA A INDADIMPLENCIA A LISTA
+                    _INADIMPLENCIABUSINESS.Add(_INADIMBUSINESS);
+                }
+                return _INADIMPLENCIABUSINESS;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
+        }
 
         /// <summary>CALCULA INADIMPLENCIA</summary>
         /// <param name="_INADIM">OBJETO DO TIPO INDADIMPLENCIA</param>
@@ -87,7 +136,7 @@ namespace easycontrol.Areas.Admin.Models.DAO
                     if (_USUARIO != null)
                     {
                         //VERIFICA SE A QUANTIDADE DE PARCELAS INFORMADA É MENOR OU IGUAL QUE A PERMITIDA
-                        if(_INADIM.QTD_PARCELAS <= _FATOR_CALCULO.QTD_PARCELAS)
+                        if (_INADIM.QTD_PARCELAS <= _FATOR_CALCULO.QTD_PARCELAS)
                         {
                             //CALCULA O ATRASO EM DIAS
                             _diasAtraso = Convert.ToInt32(DateTime.Now.Subtract(_INADIM.DT_VENCIMENTO).TotalDays);
@@ -127,7 +176,7 @@ namespace easycontrol.Areas.Admin.Models.DAO
                         }
                         else
                         {
-                            _retorno = "A quantidade de parcelas solicitadas é maior que a permitida para esse Fator";
+                            _retorno = "A quantidade de parcelas solicitada é maior que a permitida para esse Fator";
                         }
                     }
                     else
@@ -141,7 +190,7 @@ namespace easycontrol.Areas.Admin.Models.DAO
 
                 }
 
-                return _retorno; 
+                return _retorno;
             }
             catch (Exception e)
             {

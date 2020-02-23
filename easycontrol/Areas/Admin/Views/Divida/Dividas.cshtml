@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Dividas";
+}
+
+
+@Scripts.Render("~/bundles/divida")
+@RenderPage("~/Areas/Admin/Views/Shared/_Header.cshtml")
+
+<br />
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAlterar" onclick="verificaAcao()">
+    Adicionar Fator
+</button>
+<br />
+<br />
+<div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor Original</th>
+                <th scope="col">Dias de atraso</th>
+                <th scope="col">Valor do juros</th>
+                <th scope="col">Valor final</th>
+                <th scope="col">Valor de cada parcela</th>
+                <th scope="col">Data vencimento</th>
+            </tr>
+        </thead>
+        <tbody id="dividaBody">
+           
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    //Chamad função para listagem de dividas
+    listaDivida();
+</script>

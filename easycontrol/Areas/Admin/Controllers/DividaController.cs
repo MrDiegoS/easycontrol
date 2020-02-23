@@ -12,12 +12,25 @@ namespace easycontrol.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Dividas()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult CalcularDivida(INADIMPLENCIA _inadimplencia)
         {
             INADIMPLENCIADAO _INDADIMPLENCIADAO = new INADIMPLENCIADAO();
 
             return Json(_INDADIMPLENCIADAO.calcularInadim(_inadimplencia), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ListarDivida()
+        {
+            INADIMPLENCIADAO _INDADIMPLENCIADAO = new INADIMPLENCIADAO();
+
+            return Json(_INDADIMPLENCIADAO.litarInadim(), JsonRequestBehavior.AllowGet);
         }
     }
 }

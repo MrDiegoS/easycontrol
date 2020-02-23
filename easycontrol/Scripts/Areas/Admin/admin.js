@@ -20,4 +20,8 @@
         window.location.href = '/Admin/Divida/';
     });
 
+    $("#lconsDivida").on('click', function (event) {
+        event.stopPropagation();
+        window.location.href = '/Admin/Divida/Dividas';
+    });
 });

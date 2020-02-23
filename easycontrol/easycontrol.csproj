@@ -204,6 +204,8 @@
     <Compile Include="Areas\Admin\Controllers\FatorController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsuarioController.cs" />
+    <Compile Include="Areas\Admin\Models\Business\InadimplenciaBusiness.cs" />
+    <Compile Include="Areas\Admin\Models\Business\ParcelaBusiness.cs" />
     <Compile Include="Areas\Admin\Models\DAO\INADIMPLENCIADAO.cs" />
     <Compile Include="Areas\Admin\Models\INADIMPLENCIA.cs" />
     <Compile Include="Areas\User\Controllers\HomeController.cs" />
@@ -296,6 +298,7 @@
     <Content Include="Areas\Admin\Views\Fator\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Usuario\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Divida\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Divida\Dividas.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
