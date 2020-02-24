@@ -138,7 +138,7 @@ function listaDivida() {
                     _html = _html + "           <div class='card' >";
                     _html = _html + "             <div class='card - header' id='acordTitulo" + i + "'>";
                     _html = _html + "                  <h2 class='mb-0'>";
-                    _html = _html + "                       <button class='btn' type='button' data-toggle='collapse' data-target='#acordParcelas" + i + "' aria-expanded='true' aria-controls='collapseOne'>";
+                    _html = _html + "                       <button class='btn btn-block ' type='button' data-toggle='collapse' data-target='#acordParcelas" + i + "' aria-expanded='true' aria-controls='collapseOne'>";
                     _html = _html + "                           <table class='table table-dark'>";
                     _html = _html + "                                <thead>";
                     _html = _html + "                                        <tr>";
@@ -193,6 +193,7 @@ function listaDivida() {
                     _html = _html + "           </div>";
                     _html = _html + "       </div>";
                 });
+                _html = _html + "       </div>";
             };
             $("#dividaBody").html("");
             $("#dividaBody").append(_html);
