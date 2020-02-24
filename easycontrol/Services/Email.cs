@@ -173,7 +173,7 @@ namespace easycontrol.Services
  +                                                      "<div style='width:100% !important;'>"
  +                                                      "<div style='border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:25px; padding-bottom:25px; padding-right: 0px; padding-left: 25px;'>"
  +                                                      "<div align='left' class='img-container left fixedwidth' style='padding-right: 0px;padding-left: 0px;'>"
- +                                                      "<img alt='Image' border='0' class='left fixedwidth' src='https://uploaddeimagens.com.br/images/002/434/510/original/logo.png?1571537701' style='text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; height: auto; width: 100%; max-width: 139px; display: block;' title='Image' width='139'/>"
+ //+                                                     "<img alt='Image' border='0' class='left fixedwidth' src='https://uploaddeimagens.com.br/images/002/434/510/original/logo.png?1571537701' style='text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; height: auto; width: 100%; max-width: 139px; display: block;' title='Image' width='139'/>"
  +                                                      "</div>"
  +                                                      "</div>"
  +                                                      "</div>"
