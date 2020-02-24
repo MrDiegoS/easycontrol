@@ -1,6 +1,6 @@
 # Bem-vindo ao EasyControl!
 
-Olá, eu sou o EasyControl, sua solução web para controlar suas dívidas de forma mais simples e rápida.
+Olá, eu sou o EasyControl, sua solução web para controlar suas dívidas de forma simples e rápida.
 
 
 # Funções
