@@ -32,7 +32,7 @@ function listUser() {
                     _html = _html + "     <td>" + value.EMAIL + "</td>";
                     _html = _html + "     <td>" + String(value.ADMIN == true ? "Sim" : "Não") + "</td>";
                     _html = _html + "     <td>" + moment(value.DTCADASTRO).format('DD/MM/YYYY') + "</td>";
-                    _html = _html + "     <td onclick='verificaAcao(" + value.ID + ")'>Ediar</td>";
+                    _html = _html + "     <td onclick='verificaAcao(" + value.ID + ")'>Editar</td>";
                     _html = _html + "     <td onclick='excluirUsuario(" + value.ID + ")'> Excluir </td>";
                     _html = _html + " </tr>";
                 });
