@@ -33,8 +33,7 @@ namespace easycontrol.Services
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential
-            ("central.easycontrol@gmail.com", "e@SyC0nTr0l");
+            smtp.Credentials = new System.Net.NetworkCredential("central.easycontrol@gmail.com", "e@SyC0nTr0l");
             smtp.EnableSsl = true;
             smtp.Send(mail);
         }

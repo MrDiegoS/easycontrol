@@ -241,7 +241,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Areas\Admin\Models\DAO\FATOR_CALCULODAO.cs" />
     <Compile Include="Models\Context\Context.cs" />
-    <Compile Include="Models\Utiil\Hash.cs" />
+    <Compile Include="Models\Util\Hash.cs" />
     <Compile Include="Areas\Admin\Models\DAO\USUARIODAO.cs" />
     <Compile Include="Areas\Admin\Models\FATOR_CALCULO.cs" />
     <Compile Include="Areas\Admin\Models\USUARIO.cs" />
